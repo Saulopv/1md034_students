@@ -1,9 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
+<head>
+    <!-- COMMENT LINE -->
+    <title>Burger Shop</title>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+    <main>
+        <h1 style="text-align: center;">Welcome to The Veggie Burger Shop</h1>
+    </main>
+
+    <section>
+        <h3>Select burger</h3>
+        <p>This is where you execute burger selection</p>
+    <table align="center">
+        <thead>
+            <tr>
+                <th>The Veggieveggie</th>
+                <th>The Green</th>
+                <th>The Vegan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2016/08/Black-Bean-Burgers-4-600x600.jpg" alt="Span" title="The Veggieveggie burger" width="200">
+                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
+                <td><img src="https://files.cleanfooddirtygirl.com/20180308052205/black-bean-burger_scene-600x600.jpg" alt="Span" title="The Green" width="200">
+                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
+                <td><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/01/Quinoa-and-Kidney-Bean-Burgers-1-3-600x600.jpg" alt="Span" title="The vegan" width="200">
+                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+
+    <section>
+        <h3>Customer information</h3>
+        <p>This is where you provide necessary information</p>
+
+        <section id="contact">
+            <h3>Delivery information:</h3>
+            <form>
+                <p>
+                    <label for="firstname">First</label><br>
+                    <input maxlength="100" type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
+                </p>
+                <p>
+                    <label for="email">E-mail</label><br>
+                    <input maxlength="100" type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                </p>
+                <p>
+                    <label for="streetname">Street</label><br>
+                    <input maxlength="100" type="text" id="streetname" name="ln" placeholder="Street name">
+                </p>
+                <p>
+                    <label for="house">Street</label><br>
+                    <input maxlength="100" type="number" id="house" name="ln" placeholder="House number">
+                </p>
+                <p>
+                    <label for="payment">Payment</label><br>
+                    <select id="payment" name="payment">
+                        <option>Ica banken</option>
+                        <option>Nordea</option>
+                        <option>Swedbank</option>
+                        <option selected="selected">BitCoin</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="Male">Gender</label><br>
+                    <input type="radio" id="Male" name="gender" value="Male"> Male<br>
+                    <label for="Female"></label>
+                    <input type="radio" id="Female" name="gender" value="Female"> Female<br>
+                    <label for="Other"></label>
+                    <input checked="checked" type="radio" id="Other" name="gender" value="Other"> Other<br>
+                </p>
+            </form>
+            <button type="submit" name="Submit order">
+                <img src="https://naturalsolar.com.au/wp-content/uploads/2016/05/Place-Order-Button-1.png" alt="Span" width="100"></button>
+        </section>
+    </section>
+    <hr>
+<footer>
+    <p style="text-align: center;">&copy; Copyright stuff</p>
+</footer>
+</body>
 </html>

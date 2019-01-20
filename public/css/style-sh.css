@@ -1,3 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 body {
-    font-family: "Arial Hebrew",sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: deeppink;
+    cursor: pointer;
+}
+
+.first {
+    overflow:hidden;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#welcome_header {
+    position: absolute;
+    color: black;
+    margin-left: 25%;
+    margin-top: -19%;
+}
+
+#first_image {
+    height: 350px;
+    width: 100%
+}
+
+#first_image {
+    opacity: 0.6;
+}
+
+#second_header,
+#third_header{
+    text-align: center;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#button {
+    margin-top: 1%;
+}
+
+#table1 {
+    width: 80%;
+}
+
+#second_header {
+    color: white;
+    background-color: lightgrey;
+    border-style: dashed;
+}
+
+#third_header {
+    color: black;
+    background-color: grey;
+    border-style: dashed;
+}
+
+#Female {
+    margin-left: 25px;
+}
+
+#Other {
+    margin-left: 12px;
+}
+
+#all_three {
+    text-align: left;
+    font-weight: bold;
+}
+
+#gluten {
+    text-align: left;
+    font-weight: bold;
+}
+
+#egg {
+    text-align: left;
+    font-weight: bold;
+}
+
+#_A,#_B, #_C {
+    text-align: left;
+}
+
+.wrapper {
+    display: grid;
+}
+
+.a {
+    grid-column: 1 / span 1;
+    grid-row: 1/ span 1;
+}
+.b {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+.c {
+    grid-column: 2 / span 1 ;
+    grid-row: 1 / span 1;
+}
+.d {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1 ;
+}
+
+.e {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1 ;
+}
+
+.f {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1 ;
 }

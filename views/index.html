@@ -4,38 +4,34 @@
     <!-- COMMENT LINE -->
     <title>Burger Shop</title>
     <meta charset="utf-8"/>
+    <!--<link rel="section" href="css/reset.css">-->
+    <link rel="stylesheet" href="css/style-sh.css">
 </head>
 
 <body>
-    <main>
-        <h1 style="text-align: center;">Welcome to The Veggie Burger Shop</h1>
-    </main>
-
-    <section>
+    <section class="first" >
+        <main>
+            <img  id="first_image" src="https://backgroundcheckall.com/wp-content/uploads/2017/12/restaurant-background-9.jpg" width="500" alt="Span">
+            <h1 id="welcome_header">Welcome to The Veggie Burger Shop</h1>
+        </main>
+    </section>
+    <section id="second_header">
         <h3>Select burger</h3>
         <p>This is where you execute burger selection</p>
-    <table align="center">
-        <thead>
-            <tr>
-                <th>The Veggieveggie</th>
-                <th>The Green</th>
-                <th>The Vegan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2016/08/Black-Bean-Burgers-4-600x600.jpg" alt="Span" title="The Veggieveggie burger" width="200">
-                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
-                <td><img src="https://files.cleanfooddirtygirl.com/20180308052205/black-bean-burger_scene-600x600.jpg" alt="Span" title="The Green" width="200">
-                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
-                <td><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/01/Quinoa-and-Kidney-Bean-Burgers-1-3-600x600.jpg" alt="Span" title="The vegan" width="200">
-                    <ul><li>No gluten, dairy, meat, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></td>
-            </tr>
-        </tbody>
-    </table>
+                <div class="wrapper">
+                    <div class="box a">The Veggieveggie</div>
+                    <div class="box b"><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2016/08/Black-Bean-Burgers-4-600x600.jpg" alt="Span" title="The Veggieveggie burger" width="200">
+                        <ul id="_A"><li id="all_three">Dairy, egg, gluten.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
+                    <div class="box c">The Green</div>
+                    <div class="box d"><img src="https://files.cleanfooddirtygirl.com/20180308052205/black-bean-burger_scene-600x600.jpg" alt="Span" title="The Green" width="200">
+                        <ul id="_B"><li id="gluten">Gluten, dairy, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
+                    <div class="box e">The Vegan</div>
+                    <div class="box f"><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/01/Quinoa-and-Kidney-Bean-Burgers-1-3-600x600.jpg" alt="Span" title="The vegggg" width="200">
+                        <ul id="_C"><li id="egg">Egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
+                </div>
     </section>
 
-    <section>
+    <section id="third_header">
         <h3>Customer information</h3>
         <p>This is where you provide necessary information</p>
 
@@ -76,7 +72,9 @@
                     <input checked="checked" type="radio" id="Other" name="gender" value="Other"> Other<br>
                 </p>
             </form>
-            <button type="submit" name="Submit order">
+        </section>
+        <section>
+            <button id="button" type="submit" name="Submit order">
                 <img src="https://naturalsolar.com.au/wp-content/uploads/2016/05/Place-Order-Button-1.png" alt="Span" width="100"></button>
         </section>
     </section>

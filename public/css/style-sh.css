@@ -43,10 +43,6 @@ button:hover {
     margin-top: 1%;
 }
 
-#table1 {
-    width: 80%;
-}
-
 #second_header {
     color: white;
     background-color: lightgrey;
@@ -68,7 +64,7 @@ button:hover {
 }
 
 #all_three {
-    text-align: left;
+   /* text-align: left;*/
     font-weight: bold;
 }
 
@@ -82,37 +78,22 @@ button:hover {
     font-weight: bold;
 }
 
-#_A,#_B, #_C {
+#_A {
     text-align: left;
+    margin-left: 100px;
 }
 
-.wrapper {
+#SelectedOrder{
+    color: black;
+}
+
+#orderList{
+    color: black;
+    margin-right: 10px;
+}
+
+#grid {
     display: grid;
-}
-
-.a {
-    grid-column: 1 / span 1;
-    grid-row: 1/ span 1;
-}
-.b {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-}
-.c {
-    grid-column: 2 / span 1 ;
-    grid-row: 1 / span 1;
-}
-.d {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1 ;
-}
-
-.e {
-    grid-column: 3 / span 1;
-    grid-row: 1 / span 1 ;
-}
-
-.f {
-    grid-column: 3 / span 1;
-    grid-row: 2 / span 1 ;
+    grid-template-areas: "a a a";
+    grid-auto-columns: 3fr;
 }

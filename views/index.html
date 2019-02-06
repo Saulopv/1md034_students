@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-    <!-- COMMENT LINE -->
+    <script src="https://vuejs.org/js/vue.js"></script>
     <title>Burger Shop</title>
     <meta charset="utf-8"/>
     <!--<link rel="section" href="css/reset.css">-->
     <link rel="stylesheet" href="css/style-sh.css">
+    <script type="text/javascript" src="js/menu.js" defer></script>
+    <script src="js/vue_script.js" defer></script>
+
+
 </head>
 
 <body>
@@ -18,17 +23,24 @@
     <section id="second_header">
         <h3>Select burger</h3>
         <p>This is where you execute burger selection</p>
-                <div class="wrapper">
-                    <div class="box a">The Veggieveggie</div>
-                    <div class="box b"><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2016/08/Black-Bean-Burgers-4-600x600.jpg" alt="Span" title="The Veggieveggie burger" width="200">
-                        <ul id="_A"><li id="all_three">Dairy, egg, gluten.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
-                    <div class="box c">The Green</div>
-                    <div class="box d"><img src="https://files.cleanfooddirtygirl.com/20180308052205/black-bean-burger_scene-600x600.jpg" alt="Span" title="The Green" width="200">
-                        <ul id="_B"><li id="gluten">Gluten, dairy, egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
-                    <div class="box e">The Vegan</div>
-                    <div class="box f"><img src="http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/01/Quinoa-and-Kidney-Bean-Burgers-1-3-600x600.jpg" alt="Span" title="The vegggg" width="200">
-                        <ul id="_C"><li id="egg">Egg.</li><li>Eco friendly.</li><li>Full of energy.</li></ul></div>
+                <div id="grid">
+                    <div id="item1" v-for="value in item">
+                        <label>
+                            <input type="checkbox" v-on:change="changeStatus(value)">
+                                {{value.name}}
+                        <div><img v-bind:src="value.img" alt="Span" v-bind="value.name" width="200"></div>
+                        <div><ul id="_A" style="list-style-type:none;"><li id="all_three">{{ifGluten(value.gluten)}}</li><li>{{"kcal: " + value.kcal}}</li><li>{{ifLactose(value.lactose)}}</li></ul></div>
+                        </label>
+                    </div>
                 </div>
+            <div>
+                <p id="SelectedOrder">Orders: </p>
+                    <span v-for="elems in item">
+                        <div id="orderList" v-if="elems.status">
+                            {{elems.name}}
+                        </div>
+                    </span>
+            </div>
     </section>
 
     <section id="third_header">
@@ -40,23 +52,23 @@
             <form>
                 <p>
                     <label for="firstname">First</label><br>
-                    <input maxlength="100" type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
+                    <input v-model="firstLastName" maxlength="100" type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
                 </p>
                 <p>
                     <label for="email">E-mail</label><br>
-                    <input maxlength="100" type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                    <input v-model="eMail" maxlength="100" type="email" id="email" name="em" required="required" placeholder="E-mail address">
                 </p>
                 <p>
                     <label for="streetname">Street</label><br>
-                    <input maxlength="100" type="text" id="streetname" name="ln" placeholder="Street name">
+                    <input v-model="street" maxlength="100" type="text" id="streetname" name="ln" placeholder="Street name">
                 </p>
                 <p>
                     <label for="house">House</label><br>
-                    <input maxlength="100" type="number" id="house" name="ln" placeholder="House number">
+                    <input v-model="house" maxlength="100" type="number" id="house" name="ln" placeholder="House number">
                 </p>
                 <p>
                     <label for="payment">Payment</label><br>
-                    <select id="payment" name="payment">
+                    <select v-model="payment" id="payment" name="payment">
                         <option>Ica banken</option>
                         <option>Nordea</option>
                         <option>Swedbank</option>
@@ -65,17 +77,33 @@
                 </p>
                 <p>
                     <label for="Male">Gender</label><br>
-                    <input type="radio" id="Male" name="gender" value="Male"> Male<br>
+                    <input v-model="gender" type="radio" id="Male" name="gender" value="Male"> Male<br>
                     <label for="Female"></label>
-                    <input type="radio" id="Female" name="gender" value="Female"> Female<br>
+                    <input v-model="gender" type="radio" id="Female" name="gender" value="Female"> Female<br>
                     <label for="Other"></label>
-                    <input checked="checked" type="radio" id="Other" name="gender" value="Other"> Other<br>
+                    <input v-model="gender" checked="checked" type="radio" id="Other" name="gender" value="Other"> Other<br>
                 </p>
             </form>
         </section>
         <section>
-            <button id="button" type="submit" name="Submit order">
-                <img src="https://naturalsolar.com.au/wp-content/uploads/2016/05/Place-Order-Button-1.png" alt="Span" width="100"></button>
+            <button v-on:click="click()" id="button" type="submit" name="Submit order">
+                <img src="https://naturalsolar.com.au/wp-content/uploads/2016/05/Place-Order-Button-1.png" alt="Span" width="100">
+            </button>
+                <div v-if="key && notEmpty()">
+                    <p>Order confirmation:</p>
+                   <ul id="lastList" style="list-style-type:none;"><li>{{"Name: "+ orderArr()[0]}}</li>
+                    <li>{{"Mail: "+ orderArr()[1]}}</li>
+                    <li>{{"Adress: "+ orderArr()[2]}}</li>
+                    <li>{{"House number: "+ orderArr()[3]}}</li>
+                    <li>{{"Payment: "+ orderArr()[4]}}</li>
+                    <liv>{{"Gender: "+ orderArr()[5]}}</liv></ul>
+
+                    <div v-for="elems in listBurger">
+                        <div v-if="elems.status">
+                            {{"Burgers: "+ elems.name}}
+                        </div>
+                    </div>
+                </div>
         </section>
     </section>
     <hr>

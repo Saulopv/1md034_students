@@ -33,14 +33,17 @@ button:hover {
 }
 
 #second_header,
-#third_header{
+#third_header,
+#lastSection{
     text-align: center;
     margin-right: 5%;
     margin-left: 5%;
 }
 
-#button {
-    margin-top: 1%;
+#lastSection {
+    background-color: grey;
+    border-style: dashed;
+    border-top-color: grey;
 }
 
 #second_header {
@@ -53,6 +56,8 @@ button:hover {
     color: black;
     background-color: grey;
     border-style: dashed;
+    border-bottom-color: grey;
+    margin-bottom: 0;
 }
 
 #Female {
@@ -87,7 +92,7 @@ button:hover {
     color: black;
 }
 
-#orderList{
+#ordersList{
     color: black;
     margin-right: 10px;
 }
@@ -97,3 +102,4 @@ button:hover {
     grid-template-areas: "a a a";
     grid-auto-columns: 3fr;
 }
+

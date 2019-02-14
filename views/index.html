@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
-      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-    <script src="https://vuejs.org/js/vue.js"></script>
-    <title>Burger Shop</title>
     <meta charset="utf-8"/>
-    <!--<link rel="section" href="css/reset.css">-->
-    <link rel="stylesheet" href="css/style-sh.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="section" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/deli-very.css">
+    <script src="/vue/vue.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style-sh.css">
+    <script src="https://vuejs.org/js/vue.js"></script>
     <script type="text/javascript" src="js/menu.js" defer></script>
     <script src="js/vue_script.js" defer></script>
-
-
+    <title>Burger Shop</title>
 </head>
 
-<body>
+<body id="forAll">
     <section class="first" >
         <main>
             <img  id="first_image" src="https://backgroundcheckall.com/wp-content/uploads/2017/12/restaurant-background-9.jpg" width="500" alt="Span">
@@ -36,7 +38,7 @@
             <div>
                 <p id="SelectedOrder">Orders: </p>
                     <span v-for="elems in item">
-                        <div id="orderList" v-if="elems.status">
+                        <div id="ordersList" v-if="elems.status">
                             {{elems.name}}
                         </div>
                     </span>
@@ -51,7 +53,7 @@
             <h3>Delivery information:</h3>
             <form>
                 <p>
-                    <label for="firstname">First</label><br>
+                    <label for="firstname">Name</label><br>
                     <input v-model="firstLastName" maxlength="100" type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
                 </p>
                 <p>
@@ -59,16 +61,8 @@
                     <input v-model="eMail" maxlength="100" type="email" id="email" name="em" required="required" placeholder="E-mail address">
                 </p>
                 <p>
-                    <label for="streetname">Street</label><br>
-                    <input v-model="street" maxlength="100" type="text" id="streetname" name="ln" placeholder="Street name">
-                </p>
-                <p>
-                    <label for="house">House</label><br>
-                    <input v-model="house" maxlength="100" type="number" id="house" name="ln" placeholder="House number">
-                </p>
-                <p>
                     <label for="payment">Payment</label><br>
-                    <select v-model="payment" id="payment" name="payment">
+                    <select type="text" v-model="payment" id="payment" name="payment">
                         <option>Ica banken</option>
                         <option>Nordea</option>
                         <option>Swedbank</option>
@@ -85,27 +79,41 @@
                 </p>
             </form>
         </section>
-        <section>
-            <button v-on:click="click()" id="button" type="submit" name="Submit order">
+    </section>
+
+    <section id="lastSection">
+        <section id="map">
+            <h1> Click in the map! </h1>
+            <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>
+            <div class="view-box">
+                <div id="dots" v-on:click="displayOrder">
+                    <div
+                         v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                        {{'T'}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <button v-on:click="addOrder" id="button" type="submit" name="Submit order">
                 <img src="https://naturalsolar.com.au/wp-content/uploads/2016/05/Place-Order-Button-1.png" alt="Span" width="100">
             </button>
-                <div v-if="key && notEmpty()">
+                <div v-if="check">
                     <p>Order confirmation:</p>
-                   <ul id="lastList" style="list-style-type:none;"><li>{{"Name: "+ orderArr()[0]}}</li>
-                    <li>{{"Mail: "+ orderArr()[1]}}</li>
-                    <li>{{"Adress: "+ orderArr()[2]}}</li>
-                    <li>{{"House number: "+ orderArr()[3]}}</li>
-                    <li>{{"Payment: "+ orderArr()[4]}}</li>
-                    <liv>{{"Gender: "+ orderArr()[5]}}</liv></ul>
+                   <ul style="list-style-type:none;"><li>{{"Name: "+ copi()[0]}}</li>
+                    <li>{{"Mail: "+ copi()[1]}}</li>
+                    <li>{{"Payment: "+ copi()[2]}}</li>
+                    <li>{{"Gender: "+ copi()[3]}}</li>
+                    <li>{{"Deliver to: "+ getCoords()}}</li></ul>
 
-                    <div v-for="elems in listBurger">
+                    <p>Burgers:</p>
+                    <div v-for="elems in listBurgerz">
                         <div v-if="elems.status">
-                            {{"Burgers: "+ elems.name}}
+                            {{elems.name}}
                         </div>
                     </div>
                 </div>
         </section>
-    </section>
     <hr>
 <footer>
     <p style="text-align: center;">&copy; Copyright stuff</p>
